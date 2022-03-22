@@ -70,5 +70,48 @@ tuple1 = (1,2,3)
 tuple2 = (4,5,6)
 print(tuple1+tuple2)
 
-## 집합 
+## 집합 : set 키워드를 이용해 만들어지는 자료형. 중복 허용X, 순서가 없음. 따라서 집합을 인덱싱으로 접근하려면 리스트나 튜플로 변환해야 한다. 
+s1 = set([1,2,3])
+s2 = set("hello")
+#s3 = set(1,2,3) 숫자를 여러개 넣을 때에는 리스트 구조형을 갖추어야 한다. 
+
+l1 = list(s1) #리스트 구조를 갖추고 있는 자료형을 list 자료형으로 변환
+#l3 = list(s3) #이렇게 리스트 구조를 갖추고 있지 않으면 typeError가 발생한다.
+l2 = tuple(s2)
+print(l1, l2)
+
+    ###교집합
+s1 = set([1,2,3,4,5,6])
+s2 = set([4,5,6,7,8,9])
+print(s1&s2)
+
+    ###합집합
+print(s1|s2)
+print(s1.union(s2))
+
+    ###차집합
+print(s1.difference(s2))
+
+    ###집합에 요소 하나 추가
+#print(s1.add(4)) #이 상태에서는 아직 지역 변수다
+#s1 = s1.add(7)
+#print(s1) #??? 왜 None이 나오지?
+
+    ###집합에 요소 여러 개 추가
+#s1.update([8,9,10])
+#print(s1) #이건 또 왜 없다고 하지?
+
+    ### 특정 값 제거
+#s1.remove(2)
+#print(s1) 엥 이것도 안되는데?
+
+## bool 자료형 : True, False
+print(bool("python"))
+print(bool(""))
+
+
+
+
+
+
 
