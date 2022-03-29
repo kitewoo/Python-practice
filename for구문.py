@@ -18,4 +18,4 @@ for i in pumMok:
             txt.append(b)
             b=""
 
-print(txt)
+print(txt) #

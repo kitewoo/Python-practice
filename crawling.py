@@ -70,3 +70,4 @@ df_rank.to_excel("C:/Users/tt/Desktop/pycode/bugs_chart_20220325.xlsx", sheet_na
 
 
 
+##

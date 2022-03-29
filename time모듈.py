@@ -27,4 +27,4 @@ print(time.time() - stime) #코드 종료시간 - 시작시간 (즉, 코드 실�
 
 #os 모듈
 #os.mkdir(folder_name) : 현재 작업경로에 폴더 만들기
-#os.mkdir(os.getcwd()+"/하위폴더/"+folder_name)
+#os.mkdir(os.getcwd()+"/하위폴더/"+folder_name)#

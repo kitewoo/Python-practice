@@ -20,7 +20,7 @@ post_soup=soup.find_all("div", class_="list_search_post") #찾고자 하는 정�
 #print(post_soup[0].find("a")["href"]) #해당 게시글의 link는 a태그의 href 속성에 담겨있다. 이 자료는 div > a * href 이다. 따라서 2차원 배열 
 
 # 반복문을 통해 해당 페이지의 정보 반복하여 가져오기
-
+#
 post_soup=soup.find_all("div", class_="list_search_post")
 post_list=[]
 for post in post_soup:

@@ -39,7 +39,7 @@ def login(userid, userpw):
 
     #주피터는 소스코드를 잘라서 실행하기 때문에 종료가 되지 않는다. 하지만 vscode에서는 한번 실행이 되고 작업이 종료되면 driver 기능도 종료되기 때문에 열린 크롬제어창이 닫힌다. 
     #따라서 크롬제어창을 계속 열어두고 싶다면 while 구문을 사용해서 현재 함수가 종료되지 않게 하면 된다. 
-    
+
     while(True):
         pass
 
@@ -47,3 +47,4 @@ def login(userid, userpw):
 
 login(userid,userpw)
 
+#
