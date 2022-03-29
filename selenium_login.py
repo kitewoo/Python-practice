@@ -46,5 +46,3 @@ def login(userid, userpw):
 
 
 login(userid,userpw)
-
-#

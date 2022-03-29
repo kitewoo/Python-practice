@@ -57,8 +57,8 @@
         - element_attribute_to_include(locator,attribute) : 특정 요소 안에 주어진 attribute가 있을 때까지 대기
         - 이 외에도 많은 매서드가 있다. 참고 (https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.support.expected_conditions)
 
-    - ui : WebDriverWait이라는 하위 클래스를 가지고 있다. WebDriverWait(Webdriver객체명 , timeout(대기시간)=int) 
-        - WebDriverWait의 하위 매소드 until('expected_conditions')
+    - ui : WebDriverWait이라는 하위 클래스를 가지고 있다. WebDriverWait(Webdriver객체명 , int) 
+        - WebDriverWait의 하위 매소드 until('expected_conditions') , int는 최대 대기시간
 
 >#### 3. common
     - (3-1) alert : from selenium.webdriver.common.alert import Alert
@@ -79,9 +79,9 @@
 
 
 >#### selenium에서 발생할 수 있는 오류
-# NoAlertPresentException 경고창 관련 명령어를 실행했으나 현재 경고창이 뜨지 않음
-# NoSuchElementException 엘레먼트 접근하였으나 없음
-# TimeoutException 특정한 액션을 실행하였으나 시간이 오래 지나도록 소식이 없음
-# ElementNotInteractableException 엘리먼트에 클릭등을 하였으나 클릭할 성질의 엘리먼트가 아님
-# NoSuchWindowException 해당 윈도우 없음
-# NoSuchFrameException 해당 프레임 없음
+oAlertPresentException 경고창 관련 명령어를 실행했으나 현재 경고창이 뜨지 않음
+NoSuchElementException 엘레먼트 접근하였으나 없음
+TimeoutException 특정한 액션을 실행하였으나 시간이 오래 지나도록 소식이 없음
+ElementNotInteractableException 엘리먼트에 클릭등을 하였으나 클릭할 성질의 엘리먼트가 아님
+NoSuchWindowException 해당 윈도우 없음
+NoSuchFrameException 해당 프레임 없음
