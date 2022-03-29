@@ -15,7 +15,9 @@
 > webdriver의 하위 모듈에는 **Chrome**, **common**, 이 있다. 
 
 ### webdriver 하위 모듈
-> 1. Chrome("chromedriver.exe가 설치된 경로") webdriver.Chrome
+> #### 1. Chrome("chromedriver.exe가 설치된 경로") 
+    webdriver.Chrome
+    
     - **get("웹브라우저 제어할 주소")** : run하면 웹이 실행되면서 페이지가 열린다. 컴퓨터 환경에 따라 열리는 시간은 다르다. 다음 명령 전까지 받아오는 데이터가 있어야 하기 때문에 지연 명령이 있다.
     (아래 support 참고)
 
@@ -44,7 +46,7 @@
 
 
 
-> 2. support
+> #### 2. support
     - implicitly_wait(int) : int의 시간동안 모든 요소가 로드될 때까지 대기한다. 시간 내에 찾으면 대기는 종료된다. 
     - time 라이브러리를 사용해서 time.sleep(int)를 써도 된다. 
     - implicitly는 명시적인 int를 주기 때문에 효율성이 떨어진다는 단점이 있다. 
@@ -58,7 +60,7 @@
     - ui : WebDriverWait이라는 하위 클래스를 가지고 있다. WebDriverWait(Webdriver객체명 , timeout(대기시간)=int) 
         - WebDriverWait의 하위 매소드 until('expected_conditions')
 
-> 3. common
+>#### 3. common
     - (3-1) alert : from selenium.webdriver.common.alert import Alert
         - Alert 
             - Alert(driver).accept() : 팝업창 수락 누름 
@@ -76,7 +78,7 @@
 
 
 
-> selenium에서 발생할 수 있는 오류
+>#### selenium에서 발생할 수 있는 오류
 # NoAlertPresentException 경고창 관련 명령어를 실행했으나 현재 경고창이 뜨지 않음
 # NoSuchElementException 엘레먼트 접근하였으나 없음
 # TimeoutException 특정한 액션을 실행하였으나 시간이 오래 지나도록 소식이 없음
