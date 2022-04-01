@@ -28,7 +28,7 @@ df1 = df.iloc[:,0:6] #필요한 것만 선택하여 저장. (또는 del df['']�
 df1.columns = ['대여소 번호', '보관소(대여소)명', '자치구', '주소', '위도', '경도'] #열 이름 지정
 
 df1.info()  
-df1.isna().sum()  #null 값  갯수 확인하기
+df1.isna().sum()  #null 값  갯수  열 단위로 확인하기 axis=0이 default, axis=1은 행단위로 null값을 뽑아준다. 
 
 # 만약 Nan값이 있다면? 1. 행or열 전체 삭제 2. null값 대체 
 # 1. 전체 삭제는 pd.DataFrame.dropna()
@@ -65,13 +65,25 @@ plt.rcParams['axes.unicode_minus'] = False
 
 plt.figure(figsize=(15,10))
 plt.title('자치구별 따릉이 대여소 수')
-plt.bar(df_group.index, df_group['대여소 번호'], color = 'limegreen')
-plt.legend
-plt.show()
+plt.bar(df_group.index, df_group['대여소 번호'], color = 'limegreen', label = '대여소 수')
+
+plt.legend()
+# 시각화 자료 저장하기
+plt.savefig('자치구별 따릉이 대여소 수.png') #현재 작업 경로에 저장된다. show() 전에 둬야한다. show() 소스코드 안에 freed from memory하는 것이 포함되어 있기 때문이다. 
+
+#plt.savefig('name.png', dpi=100, facecolor(배경색)=' ' ,  edgecolor(테두리) = ' ' , linewidth=0, bbox_inches(그래프저장영역)='None,tight', pad_inches(여백)= 0.1,  )
+
+plt.show() #plt.show는 항상 마지막
 
 
 
-
+# pandas.DataFrame.astype({'열이름 : 데이터형식'})  : 특정 열의 dtype을 데이터형식으로 변경하여 표시(카피를 표시하므로 반영하고 싶다면 copy = false 또는 변수로 저장) (특정 열을 지정하지 않고 데이터형식만 입력하면 전체가 다 바뀜) , copy = false로 넣으면 porpagate될 수 있다.
+# pandas.DataFrame.unique() : 고유값 추출하여 리스트 형태로 출력 
+# pandas.DataFrame.nunique() : 고유값 종류 갯수
+# pandas.DataFrame.value_counts() : 고유값별로 데이터의 수 출력, 내림차순이 default. 오름차순으로 보고싶다면 () 안에 ascending = True 입력
+# pandas.DataFrame.insert(columns index, '열 이름', value(scalar,series,array), allow_duplicates = False) : 열 인덱스에 해당하는 곳에 '열 이름'으로 열 삽입. 원래 있던 열부터 오른쪽으로 한칸씩 이동
+# pandas.DataFrame.rename(columns = {'a':'b'}, inplace = True) : 열이름 a를 b로 변경하고 저장
+# pandas.DataFrame.drop(['열이름'], axis=1, inplace=True) : 특정 열 제거
 
 
 
