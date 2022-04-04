@@ -14,7 +14,7 @@ from urllib import request
 
 driver = Chrome("C:/Users/tt/Desktop/pycode/chromedriver") # 프로그램 연결
 driver.get("https://www.instagram.com/")
-
+  
 try :
     elem = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="loginForm"]/div[1]/div[3]/button'))) #괄호 3개임. ㄷㄷ
     print(elem)

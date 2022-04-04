@@ -89,7 +89,7 @@ df_rank = pd.DataFrame(bugs_day, columns=['일시','순위','곡','아티스트'
 # 시각화하기 (100일분)
 ## 1위만 누적 데이터를 구해보자
 df_rank1 = df_rank[df_rank['순위']=='1']
-df_rank1 = df_rank1.groupby('아티스트')[['곡']].count()
+df_rank1 = df_rank1.groupby('아티스트')[['곡']].count() #정렬 : ascending = False (내림차순) True(오름차순)
 print(df_rank1.head())
 
 # 어떤 아티스트가 최근 100일간 1위를 가장 많이했을까?

@@ -9,12 +9,24 @@
 
 ## def 
 
-## Crawling and selenium 
+## bs4 
+> bs4는 requests된 웹브라우저의 html 정보를 가져와서 parsing하고 그 안에서 값들을 검색, 추출하는 라이브러리이다. 
+ ### bs4의 하위 패키지 BeautifulSoup : from bs4 import BeautifulSoup as bs
+> #### 1. bs(html, 'html.parser)
+    - requests한 html을 받아와서 soup 객체로 넣을 때 parsing 하는 것.
+    
+        - text화된 html에서 3가지 매서드로 태그를 찾을 수 있다. 
+        - find('tag', 속성) : 
+        - find_all('tag', 속성) : 
+        - select_one : copy css_selector로 가져온 태그로 검색, 가장 첫번째 태그를 추출
+        - select : 찾은 모든 selector를 태그 추출하여 리스트로 저장
+
+## Selenium 
 > <strong>selenium 라이브러리</strong>은 웹브라우저를 통제하여 파이썬으로 테스트할 때 사용하는 것이 주된 목적이나 크롤링에서도 유용하게 사용할 수 있다. 
 > selenium은 하위 패키지에는 <strong>webdriver</strong>가 있다. 
 > webdriver의 하위 모듈에는 **Chrome**, **common**, 이 있다. 
 
-### webdriver 하위 모듈
+ ### webdriver 하위 모듈
 > #### 1. Chrome("chromedriver.exe가 설치된 경로") 
     webdriver.Chrome
     
@@ -60,7 +72,7 @@
     - ui : WebDriverWait이라는 하위 클래스를 가지고 있다. WebDriverWait(Webdriver객체명 , int) 
         - WebDriverWait의 하위 매소드 until('expected_conditions') , int는 최대 대기시간
 
->#### 3. common
+> #### 3. common
     - (3-1) alert : from selenium.webdriver.common.alert import Alert
         - Alert 
             - Alert(driver).accept() : 팝업창 수락 누름 
@@ -78,7 +90,7 @@
 
 
 
->#### selenium에서 발생할 수 있는 오류
+> #### selenium에서 발생할 수 있는 오류
 oAlertPresentException 경고창 관련 명령어를 실행했으나 현재 경고창이 뜨지 않음
 NoSuchElementException 엘레먼트 접근하였으나 없음
 TimeoutException 특정한 액션을 실행하였으나 시간이 오래 지나도록 소식이 없음
