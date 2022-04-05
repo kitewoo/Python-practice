@@ -1,5 +1,7 @@
 # 작업사항 : 서울특별시 공공자전거 대여소 정보를 가지고 원하는대로 시각화하기
 
+from ast import increment_lineno
+import matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import rc
@@ -87,6 +89,36 @@ plt.show() #plt.show는 항상 마지막
 
 
 
+# 데이터 분포 보기(히스토그램) 
 
+bank_df = pd.read_csv('C:/Users/tt/Desktop/pycode/bank.csv', encoding = 'cp949')
 
+plt.hist(bank_df['age'])
+plt.xlabel('age')
+plt.ylabel('frequency')
+plt.show()
+
+# 두 열을 기준으로 산포도 작성
+plt.scatter(bank_df['age'], bank_df['balance'])
+plt.xlabel('age')
+plt.ylabel('balance')
+plt.show()
+
+# 상관계수 계산
+print(bank_df[['age','balance']].corr())  #나이와 자산의 상관계수는 0.11236으로 낮다.
+
+# 산포도행렬의 작성
+pd.plotting.scatter_matrix(bank_df[['age','balance','day','duration']])
+plt.tight_layout()
+plt.show()
+
+# pie chart : 비율 차트
+job_u = bank_df['job'].unique()
+    #비율 계산 2가지 방법
+    #1. bank_df.groupby('job')[['age']].count()/len(bank_df))
+    #2. bank_df['job'].value_counts(ascending=False, normalize=True) : Return a 'Series' containing counts of unique values.
+job_ratio = bank_df['job'].value_counts(normalize=True, ascending=False)#If True then the object returned will contain the relative frequencies of the unique values.
+
+plt.pie(job_ratio, labels=job_ratio.index)
+plt.show()
 
