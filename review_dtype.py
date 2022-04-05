@@ -90,10 +90,9 @@ s1 = set([1,2,3])
 s2 = set("hello")
 #s3 = set(1,2,3) 숫자를 여러개 넣을 때에는 리스트 구조형을 갖추어야 한다. 
 
-l1 = list(s1) #리스트 구조를 갖추고 있는 자료형을 list 자료형으로 변환
+# l1 = list(s1) #리스트 구조를 갖추고 있는 자료형을 list 자료형으로 변환 : 2차원으로 나올 줄 알았는데 그냥 에러뜸
 #l3 = list(s3) #이렇게 리스트 구조를 갖추고 있지 않으면 typeError가 발생한다.
 l2 = tuple(s2)
-print(l1, l2)
 
     ###교집합
 s1 = set([1,2,3,4,5,6])
@@ -136,6 +135,25 @@ print(str1.count("문자"))
 
 
 
+#pandas DataFrame 데이터 형식 변경 : astype모듈 
+
+#DataFrame.astype(dtype, copy=True, errors='raise') 
+#copy는 default가 True이다. 만약 False로 바꾸면 원본 데이터 객체에 저장된다.
+#errors의 default는 raise이다. 여러 개를 대체할 때 하나라도 대체할 수 없을 때 error가 뜨는데 그것을 무시하고 변경하려면 'ignore'로 바꾸면 된다.
+
+col1 = [1,2,3,4] #int
+col2 = ['1', '2', '3', '4'] #str
+col3 = ['1', 'r', 'b' , '4'] #str
+df = pd.DataFrame(data={'col1':col1, 'col2':col2, 'col3':col3})
+
+# 1. 특정 열만 바꾸기
+
+# df.astype({'col2':'int', 'col3':'int'}, copy=True, errors='raise') #에러 발생 : col3에서 int로 바꿀 수 없는 요소가 있기 때문
+df = df.astype({'col2': 'int64' , 'col3': 'int32' }, errors='ignore') 
+
+# 바꾸려고 하는 데이터형식을 입력하는 방법은 그냥 int 이렇게 입력해도 되고 str로 'int' 이렇게 입력하면 된다. 그냥 입력하면 자동으로 맞는 int로 바꿔준다. int32, int64를 특별히 지정해주고 싶다면 str로 작성해야 한다. 
+
+print(df.info())
 
 
-
+# 모든 열을 다 바꾸고 싶으면 df.astype(dtype='int') 이런 식으로 입력하면 된다. 

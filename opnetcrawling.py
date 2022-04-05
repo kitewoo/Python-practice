@@ -78,7 +78,7 @@ import glob
 
 file_format = ".xls"
 file_path = 'C:/Users/tt/Desktop/pycode/주유소 데이터'
-file_list = glob.glob(f'{file_path}/*{file_format}')
+file_list = glob.glob(f'{file_path}/*{file_format}') #파일 형식과 파일 경로 포함하는 것들을 모두 리스트로 저장
 
 merge_df = pd.DataFrame()
 
