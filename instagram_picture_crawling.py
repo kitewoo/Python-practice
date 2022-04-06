@@ -100,8 +100,23 @@ for i in range(10):
     
             except :
                 print("오류가 발생했습니다.")
+    except:
+                
+        if i == 0:
+            driver.find_element(By.XPATH, "/html/body/div[6]/div[2]/div/div/button").click()
+            try :
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[2]'))) 
 
-print(img_tag)
+            except :
+                print("오류가 발생했습니다.")
+        else:
+            driver.find_element(By.XPATH, "/html/body/div[6]/div[2]/div/div[2]/button").click()
+            try :
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[2]'))) 
+
+            except :
+                print("오류가 발생했습니다.")
+        pass
 
 fdir="C:/Users/tt/Desktop/pycode/images/"+keyword+'/'
 
