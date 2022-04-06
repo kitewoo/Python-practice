@@ -122,3 +122,68 @@ job_ratio = bank_df['job'].value_counts(normalize=True, ascending=False)#If True
 plt.pie(job_ratio, labels=job_ratio.index)
 plt.show()
 
+# marital 값의 비율을 계산
+marital_nor=bank_df['marital'].value_counts(ascending=False, normalize=True)
+print(marital_nor)
+
+# marital의 원 그래프를 작성
+plt.pie(marital_nor.values, labels=marital_nor.index)
+plt.axis("equal")
+plt.show()
+
+# y의 원 그래프를 작성
+y_nor=bank_df['y'].value_counts(ascending=False, normalize=True)
+print(y_nor)
+
+plt.pie(y_nor.values, labels=y_nor.index)
+plt.axis("equal")
+plt.show()
+
+# 차트 한번에 출력하기
+
+fig, axs = plt.subplots(1, 3, figsize=(12, 4), sharey=True)
+axs[0].pie(job_ratio.values, labels=job_ratio.index)
+axs[1].pie(marital_nor.values, labels=marital_nor.index)
+axs[2].pie(y_nor.values, labels=y_nor.index)
+
+plt.show()
+
+## plt.subplots()
+fig, axs = plt.subplots(2, 3, figsize=(12, 6), sharey=True)
+
+# 차트 출력
+axs[0][0].pie(job_ratio.values, labels=job_ratio.index)
+axs[0][2].pie(marital_nor.values, labels=marital_nor.index)
+axs[1][1].pie(y_nor.values, labels=y_nor.index)
+ 
+# 전체 레이아웃..
+fig.tight_layout()
+
+plt.show()
+
+
+# boxplot 그리기 : https://rfriend.tistory.com/410
+
+# y가 yes나 no일때의 age데이터를 추출(다른 변수(열)값도 출력 가능)
+y_yes = bank_df[bank_df['y'] == 'yes'] 
+y_no = bank_df[bank_df['y'] == 'no'] 
+
+
+# y가 yes나 no일때의 age데이터를 추출(age에 대해서만 사용 가능)
+y_yes2 = bank_df.loc[bank_df['y'] == 'yes', 'age']
+y_no2 = bank_df.loc[bank_df['y'] == 'no', 'age'] 
+
+# yes와 no의 데이터를 정리
+y_age=[y_yes['age'], y_no['age']]
+print(y_age)
+
+# 박스 플롯의 작성
+plt.boxplot(y_age)
+
+plt.xlabel("y")
+plt.ylabel("age")
+
+ax = plt.gca()
+plt.setp(ax, xticklabels=['yes', 'no'])
+
+plt.show()
