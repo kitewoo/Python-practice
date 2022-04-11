@@ -58,21 +58,21 @@ except :
 driver.find_element(By.XPATH, '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div[1]/a/div').click() #검색되면 첫 태그 클릭
 
 try :
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="react-root"]/section/main/div/div[3]/article/div[1]/div/div[1]/div[1]/a/div[1]/div[2]'))) 
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="react-root"]/section/main/div/div[2]/article/div[1]/div/div[1]/div[1]/a/div[1]/div[2]'))) 
     
 except :
     print("오류가 발생했습니다.")
 
-driver.find_element(By.XPATH, '//*[@id="react-root"]/section/main/div/div[3]/article/div[1]/div/div[1]/div[1]/a/div[1]/div[2]').click() #첫 게시물 클릭
+driver.find_element(By.XPATH, '//*[@id="react-root"]/section/main/div/div[2]/article/div[1]/div/div[1]/div[1]/a/div[1]/div[2]').click() #첫 게시물 클릭
 
-try :
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[1]/div[2]'))) 
-    
-except :
-    print("오류가 발생했습니다.")
+#//*[@id="react-root"]/section/main/div/div[3]/article/div[1]/div/div[1]/div[1]/a/div[1]/div[2]
+#//*[@id="react-root"]/section/main/div/div[2]/article/div[1]/div/div[1]/div[1]/a/div[1]/div[2]
+#왜 다른지는 모르겠음.
+
+time.sleep(2)
 
 img_tag = []
-for i in range(10):
+for i in range(480):
     try:
         html = driver.page_source
         soup = bs(html, "html.parser")
@@ -81,51 +81,44 @@ for i in range(10):
             img_src = img.select_one('.KL4Bh').img['src']
             img_tag.append(img_src)
 
+            fdir="C:/Users/tt/Desktop/pycode/images/"+keyword+'/'
+            img_name = fdir + keyword + str(i) + ".jpg"
+            request.urlretrieve(img_src, img_name)
+
         except:
             img = soup.find("div", class_='_97aPb C2dOX HCDIA')
             img_src = img.select_one('.KL4Bh').img['src']
             img_tag.append(img_src)
+            
+            fdir="C:/Users/tt/Desktop/pycode/images/"+keyword+'/'
+            img_name = fdir + keyword + str(i) + ".jpg"
+            request.urlretrieve(img_src, img_name)
 
         if i == 0:
             driver.find_element(By.XPATH, "/html/body/div[6]/div[2]/div/div/button").click()
-            try :
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[2]'))) 
-    
-            except :
-                print("오류가 발생했습니다.")
+
         else:
             driver.find_element(By.XPATH, "/html/body/div[6]/div[2]/div/div[2]/button").click()
-            try :
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[2]'))) 
-    
-            except :
-                print("오류가 발생했습니다.")
+        time.sleep(1)
+
     except:
                 
         if i == 0:
             driver.find_element(By.XPATH, "/html/body/div[6]/div[2]/div/div/button").click()
             try :
-                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[2]'))) 
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[2]/div/div[2]/button'))) 
 
             except :
                 print("오류가 발생했습니다.")
         else:
             driver.find_element(By.XPATH, "/html/body/div[6]/div[2]/div/div[2]/button").click()
             try :
-                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[3]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div[2]'))) 
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div[2]/div/div[2]/button'))) 
 
             except :
                 print("오류가 발생했습니다.")
+        time.sleep(1)
+
         pass
 
-fdir="C:/Users/tt/Desktop/pycode/images/"+keyword+'/'
 
-num = 1
-for tag in img_tag:
-    img_name = fdir + keyword + str(num) + ".jpg"
-    request.urlretrieve(tag, img_name)
-    time.sleep(1)
-    num += 1
-
-while True:
-    pass
