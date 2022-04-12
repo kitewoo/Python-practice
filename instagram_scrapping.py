@@ -62,7 +62,7 @@ except :
 
 folder = os.mkdir(keyword)
 
-import math
+'''import math
 from tqdm import tqdm 
 import re
 
@@ -88,9 +88,40 @@ for i in tqdm(range(count_down)):
             tag = c.find('img')['src']
             if tag not in tag1:
                 tag1.append(tag)
-    time.sleep(1.5)
+    time.sleep(1.5)'''
 
+
+import math
+from tqdm import tqdm 
+import re
+
+html = driver.page_source
+soup = bs(html,'html.parser')
+concnt = soup.find('span', class_='g47SY').get_text()
+concnt = re.sub(",","",concnt)
+
+count_down = math.floor(int(concnt)/8)
+
+
+
+tag1 = []
+
+while len(tag1) != int(concnt):
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight)") 
+    html = driver.page_source
+    soup = bs(html,'html.parser')
+    contents = soup.find_all('div', class_='Nnq7C weEfm')
+    for content in contents:
+        con = content.find_all('div',class_="v1Nh3 kIKUG _bz0w")
+        for c in con:
+            tag = c.find('img')['src']
+            if tag not in tag1:
+                tag1.append(tag)
+    time.sleep(1.5)
     
+    if len(tag1) == int(concnt):
+        print(len(tag1))
+        
 fdir = "C:/Users/tt/Desktop/pycode/"+keyword+'/'
 for a in range(len(tag1)):
     img_name = fdir + keyword + str(a) + ".jpg"
