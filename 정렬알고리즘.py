@@ -74,3 +74,42 @@ def quick_sort(array):
 
 print(quick_sort(array))
 
+# 계수 정렬 : 특정한 조건이 부합할 때만 사용할 수 있지만 매우 빠르게 동작하는 알고리즘
+# 조건 : 데이터의 크기 범위가 제한되어 '정수' 형태로 표현할 수 있을 때 사용 가능하다.
+# 데이터의 개수가 N, 데이터(양수) 중 최댓값이 K일 때 최악의 경우에도  수행시간 O(N+K)를 보장.
+
+array = [7,5,9,0,3,1,6,2,9,1,4,8,0,5,2]
+
+count = [0] * (max(array)+1)
+
+for i in range(len(array)): # 각 데이터에 해당하는 인덱스의 값 증가
+    count[array[i]] += 1
+
+for i in range(len(count)): # 각 리스트에 기록된 정렬 정보 확인
+    for j in range(count[i]):
+        print(i, end=' ') # 띄어쓰기를 구분으로 등장한 횟수만큼 인덱스 출력
+
+#DFS 깊이 우선 탐색
+
+def dfs(graph, v, visited):
+    #현재 노드 방문 처리
+    visited[v] = True
+    print(v, end=' ')
+    #현재 노드와 연결된 다른 노드를 재귀적으로 방문
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(graph, i ,visited)
+
+graph = [
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [7],
+    [2,6,8],
+    [1,7]]
+
+visited = [False]*9
+dfs(graph, 1, visited)
+
